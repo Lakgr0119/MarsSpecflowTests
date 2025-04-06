@@ -5,46 +5,41 @@ using System.Text;
 using System.Threading.Tasks;
 using MarsSpecflowTests.Utilities;
 using OpenQA.Selenium;
+using OpenQA.Selenium.Support.UI;
 
 namespace MarsSpecflowTests.Pages
 {
     public class LoginPage
     {
         public IWebDriver driver;
-        IWebElement emailElement => driver.FindElement(By.XPath("//input[@placeholder='Email address']"));
-        IWebElement passWordElement => driver.FindElement(By.XPath("//input[@placeholder='Password']"));
-        IWebElement checkBoxElement => driver.FindElement(By.XPath("//input[@type='checkbox']"));
-        IWebElement loginButtonElement => driver.FindElement(By.XPath("//button[@class='fluid ui teal button']"));
+        public IWebElement emailElement => driver.FindElement(By.XPath("//input[@placeholder='Email address']"));
+        public IWebElement passWordElement => driver.FindElement(By.XPath("//input[@placeholder='Password']"));
+        public  IWebElement checkBoxElement => driver.FindElement(By.XPath("//div//input[@type='checkbox']"));
+        public  IWebElement loginButtonElement => driver.FindElement(By.CssSelector("button.fluid.ui.teal.button"));
 
         public LoginPage(IWebDriver driver)
-        {
+        { 
             this.driver = driver;
         }
-
-        public void loginActions()
+        public void LoginActions(String username, String password)
         {
-            driver.Navigate().GoToUrl("http://localhost:5000/");
-            driver.Manage().Window.Maximize();
-            Waits.waitToBeClickable(driver, "Link Text", "Sign In", 10);
-            driver.FindElement(By.LinkText("Sign In")).Click();
-
-        }
-
-        public void enterCredentials(string username, string password)
-        {
-            Waits.waitToBeVisible(driver, "Xpath", "//input[@placeholder='Email address']", 10);
-            emailElement.SendKeys(username);
-            emailElement.Clear();
-            Waits.waitToBeVisible(driver, "Xpath", "//input[@placeholder='password']", 10);
-            passWordElement.SendKeys(password);
-            passWordElement.Clear();
-            Waits.waitToBeClickable(driver, "Xpath", "//input[@type='checkbox']", 10);
-            checkBoxElement.Click();
-            Waits.waitToBeClickable(driver, "Xpath", "//button[@class='fluid ui teal button']", 10);
-            loginButtonElement.Click();
-
+             
+       driver.Navigate().GoToUrl("http://localhost:5000/Home");
+       Waits.waitToBeClickable(driver, "Link Text", "Sign In", 5);
+       driver.FindElement(By.LinkText("Sign In")).Click();
+       Waits.waitToBeVisible(driver, "Xpath", "//input[@placeholder='Email address']", 30);
+       emailElement.SendKeys(username);
+       Waits.waitToBeVisible(driver, "Xpath", "//input[@placeholder='Password']", 30);
+       passWordElement.SendKeys(password);
+       //Waits.waitToBeClickable(driver, "Xpath", "//div//input[@type='checkbox']", 60);
+       checkBoxElement.Click();
+       Waits.waitToBeClickable(driver, "CssSelector", "button.fluid.ui.teal.button", 30);
+       loginButtonElement.Click();
+       WebDriverWait wait = new WebDriverWait(driver, TimeSpan.FromSeconds(30));
+       wait.Until(driver => driver.Url.Contains("http://localhost:5000/Account/Profile"));
+            
+            }
         }
 
     }
-}
 

@@ -20,13 +20,15 @@ namespace MarsSpecflowTests.Feature
     [System.CodeDom.Compiler.GeneratedCodeAttribute("TechTalk.SpecFlow", "3.9.0.0")]
     [System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
     [NUnit.Framework.TestFixtureAttribute()]
-    [NUnit.Framework.DescriptionAttribute("Manage Languages on Profile Page")]
-    public partial class ManageLanguagesOnProfilePageFeature
+    [NUnit.Framework.DescriptionAttribute("Languages")]
+    [NUnit.Framework.CategoryAttribute("positive")]
+    public partial class LanguagesFeature
     {
         
         private TechTalk.SpecFlow.ITestRunner testRunner;
         
-        private static string[] featureTags = ((string[])(null));
+        private static string[] featureTags = new string[] {
+                "positive"};
         
 #line 1 "Languages.feature"
 #line hidden
@@ -35,8 +37,9 @@ namespace MarsSpecflowTests.Feature
         public virtual void FeatureSetup()
         {
             testRunner = TechTalk.SpecFlow.TestRunnerManager.GetTestRunner();
-            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "Manage Languages on Profile Page", "  As a user\r\n  I want to add, edit, and delete languages on my profile\r\n  So that" +
-                    " my profile reflects my language skills", ProgrammingLanguage.CSharp, featureTags);
+            TechTalk.SpecFlow.FeatureInfo featureInfo = new TechTalk.SpecFlow.FeatureInfo(new System.Globalization.CultureInfo("en-US"), "Feature", "Languages", "As a user, I want to add my languages and skills to my profile  \r\nSo that people " +
+                    "can see my expertise.  \r\nAdding, editing, and deleting languages in user profile" +
+                    "", ProgrammingLanguage.CSharp, featureTags);
             testRunner.OnFeatureStart(featureInfo);
         }
         
@@ -75,14 +78,50 @@ namespace MarsSpecflowTests.Feature
         }
         
         [NUnit.Framework.TestAttribute()]
-        [NUnit.Framework.DescriptionAttribute("Add a new language to the profile")]
-        [NUnit.Framework.CategoryAttribute("tag1")]
-        [NUnit.Framework.TestCaseAttribute("Hindi", "Native/Bilingual", null)]
-        [NUnit.Framework.TestCaseAttribute("French", "Conversational", null)]
-        public void AddANewLanguageToTheProfile(string language, string level, string[] exampleTags)
+        [NUnit.Framework.DescriptionAttribute("Verify login with different valid credentials")]
+        [NUnit.Framework.IgnoreAttribute("Ignored scenario")]
+        [NUnit.Framework.TestCaseAttribute("anya@gmail.com", "123123", null)]
+        public void VerifyLoginWithDifferentValidCredentials(string username, string password, string[] exampleTags)
         {
             string[] @__tags = new string[] {
-                    "tag1"};
+                    "ignore"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("username", username);
+            argumentsOfScenario.Add("password", password);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Verify login with different valid credentials", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 10
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 11
+  testRunner.Given(string.Format("User is on the login page and enters \"{0}\" and \"{1}\"", username, password), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("[Positive] Add a new language to the profile")]
+        [NUnit.Framework.CategoryAttribute("order1")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.TestCaseAttribute("Hindi", "Fluent", null)]
+        [NUnit.Framework.TestCaseAttribute("French", "Conversational", null)]
+        public void PositiveAddANewLanguageToTheProfile(string language, string level, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "order1",
+                    "positive"};
             if ((exampleTags != null))
             {
                 @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
@@ -91,8 +130,54 @@ namespace MarsSpecflowTests.Feature
             System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
             argumentsOfScenario.Add("language", language);
             argumentsOfScenario.Add("level", level);
-            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("Add a new language to the profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
-#line 8
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Positive] Add a new language to the profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 18
+this.ScenarioInitialize(scenarioInfo);
+#line hidden
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 19
+  testRunner.Given("User is on the Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 20
+  testRunner.When("User clicks on the Add New button under Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 21
+  testRunner.And(string.Format("User enters \"{0}\" with \"{1}\"", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line hidden
+#line 22
+  testRunner.Then(string.Format("The language \"{0}\" should be added to the profile", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+#line hidden
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("[Positive]Edit an existing language")]
+        [NUnit.Framework.CategoryAttribute("order2")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.TestCaseAttribute("Hindi", "Telugu", "Native/Bilingual", null)]
+        public void PositiveEditAnExistingLanguage(string oldLanguage, string newLanguage, string newLevel, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "order2",
+                    "positive"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("oldLanguage", oldLanguage);
+            argumentsOfScenario.Add("newLanguage", newLanguage);
+            argumentsOfScenario.Add("newLevel", newLevel);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Positive]Edit an existing language", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 32
   this.ScenarioInitialize(scenarioInfo);
 #line hidden
             if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
@@ -102,20 +187,55 @@ namespace MarsSpecflowTests.Feature
             else
             {
                 this.ScenarioStart();
-#line 9
-    testRunner.Given("User is on the Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line 33
+  testRunner.Given("User is on the Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
 #line hidden
-#line 10
-    testRunner.When("User clicks on the \"Add New\" button under Languages", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line 34
+  testRunner.When(string.Format("User edits the language \"{0}\" to \"{1}\" with \"{2}\"", oldLanguage, newLanguage, newLevel), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
 #line hidden
-#line 11
-    testRunner.And(string.Format("User enters \"{0}\" with \"{1}\"", language, level), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+#line 35
+  testRunner.Then(string.Format("The language \"{0}\" should be added to the profile", newLanguage), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
-#line 12
-    testRunner.And("User clicks on the \"Add\" button", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "And ");
+            }
+            this.ScenarioCleanup();
+        }
+        
+        [NUnit.Framework.TestAttribute()]
+        [NUnit.Framework.DescriptionAttribute("[Positive]Delete a language from the profile")]
+        [NUnit.Framework.CategoryAttribute("order3")]
+        [NUnit.Framework.CategoryAttribute("positive")]
+        [NUnit.Framework.TestCaseAttribute("French", null)]
+        public void PositiveDeleteALanguageFromTheProfile(string language, string[] exampleTags)
+        {
+            string[] @__tags = new string[] {
+                    "order3",
+                    "positive"};
+            if ((exampleTags != null))
+            {
+                @__tags = System.Linq.Enumerable.ToArray(System.Linq.Enumerable.Concat(@__tags, exampleTags));
+            }
+            string[] tagsOfScenario = @__tags;
+            System.Collections.Specialized.OrderedDictionary argumentsOfScenario = new System.Collections.Specialized.OrderedDictionary();
+            argumentsOfScenario.Add("language", language);
+            TechTalk.SpecFlow.ScenarioInfo scenarioInfo = new TechTalk.SpecFlow.ScenarioInfo("[Positive]Delete a language from the profile", null, tagsOfScenario, argumentsOfScenario, featureTags);
+#line 42
+this.ScenarioInitialize(scenarioInfo);
 #line hidden
-#line 13
-    testRunner.Then(string.Format("The language \"{0}\" should be added to the profile", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
+            if ((TagHelper.ContainsIgnoreTag(tagsOfScenario) || TagHelper.ContainsIgnoreTag(featureTags)))
+            {
+                testRunner.SkipScenario();
+            }
+            else
+            {
+                this.ScenarioStart();
+#line 43
+  testRunner.Given("User is on the Profile Page", ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Given ");
+#line hidden
+#line 44
+  testRunner.When(string.Format("User deletes the language \"{0}\"", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "When ");
+#line hidden
+#line 45
+  testRunner.Then(string.Format("The language \"{0}\" should be removed from the profile", language), ((string)(null)), ((TechTalk.SpecFlow.Table)(null)), "Then ");
 #line hidden
             }
             this.ScenarioCleanup();

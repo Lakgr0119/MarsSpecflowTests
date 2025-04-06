@@ -11,7 +11,7 @@
     <PackageReference Include="DotNetSeleniumExtras.PageObjects" Version="3.11.0" />
     <PackageReference Include="Gherkin" Version="32.0.0" />
     <PackageReference Include="Microsoft.NET.Test.Sdk" Version="17.13.0" />
-    <PackageReference Include="NUnit" Version="4.3.2" />
+<PackageReference Include="NUnit" Version="3.13.3" />
     <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
     <PackageReference Include="Selenium.Support" Version="4.29.0" />
     <PackageReference Include="Selenium.WebDriver" Version="4.29.0" />
@@ -24,7 +24,6 @@
 
   <ItemGroup>
     <Folder Include="Feature\" />
-    <Folder Include="Hooks\" />
   </ItemGroup>
 
 </Project>
